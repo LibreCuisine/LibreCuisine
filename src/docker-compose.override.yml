@@ -1,0 +1,32 @@
+version: "3.10"
+
+services:
+  nosqldata:
+    ports:
+      - "27017:27017"
+    volumes:
+      - librecuisine-nosqldata:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${NO_SQL_USER:-root}
+      MONGO_INITDB_ROOT_PASSWORD: ${NO_SQL_PASS:-password}
+  
+  recipe-api:
+    ports:
+      - "5101:80"
+    environment:
+      DATABASE__DATABASENAME: "RecipeDB"
+      DATABASE__COLLECTIONNAME: "Recipes"
+      DATABASE__CONNECTIONSTRING: "mongodb://${NO_SQL_USER:-root}:${NO_SQL_PASS:-password}@nosqldata:27017"
+      
+  mongo-express:
+    ports:
+      - "8081:8081"
+    image: mongo-express
+    environment:
+      ME_CONFIG_MONGODB_URL: "mongodb://${NO_SQL_USER:-root}:${NO_SQL_PASSWORD:-password}@nosqldata:27017"
+    depends_on:
+      - nosqldata
+
+volumes:
+  librecuisine-nosqldata:
+    external: false

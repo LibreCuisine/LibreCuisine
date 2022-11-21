@@ -1,1 +1,12 @@
-version: 3.10
+version: "3.10"
+
+services:
+  nosqldata:
+    image: mongo
+  recipe-api:
+    image: recipe.api:latest
+    build:
+      context: .
+      dockerfile: Services/Recipe/Recipe.API/Dockerfile
+    depends_on:
+      - nosqldata

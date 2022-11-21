@@ -5,6 +5,14 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{FEA0C318-FFED-4D39-8781-265718CA43DD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recipe.API", "Services\Recipe\Recipe.API\Recipe.API.csproj", "{2319A2B7-8CEC-4A2E-96DC-3A3FE9882674}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{E609234A-17BD-48C2-B486-B97DBE6121EF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Recipe", "Recipe", "{D39A0F3D-0CD7-4D96-9B3E-A18CE3E51C69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recipe.Common", "Services\Recipe\Recipe.Common\Recipe.Common.csproj", "{86843AEB-AB1E-49B4-A7D8-248D1FBCFF79}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +20,20 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2319A2B7-8CEC-4A2E-96DC-3A3FE9882674}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2319A2B7-8CEC-4A2E-96DC-3A3FE9882674}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2319A2B7-8CEC-4A2E-96DC-3A3FE9882674}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2319A2B7-8CEC-4A2E-96DC-3A3FE9882674}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86843AEB-AB1E-49B4-A7D8-248D1FBCFF79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86843AEB-AB1E-49B4-A7D8-248D1FBCFF79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86843AEB-AB1E-49B4-A7D8-248D1FBCFF79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86843AEB-AB1E-49B4-A7D8-248D1FBCFF79}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D39A0F3D-0CD7-4D96-9B3E-A18CE3E51C69} = {E609234A-17BD-48C2-B486-B97DBE6121EF}
+		{2319A2B7-8CEC-4A2E-96DC-3A3FE9882674} = {D39A0F3D-0CD7-4D96-9B3E-A18CE3E51C69}
+		{86843AEB-AB1E-49B4-A7D8-248D1FBCFF79} = {D39A0F3D-0CD7-4D96-9B3E-A18CE3E51C69}
 	EndGlobalSection
 EndGlobal
