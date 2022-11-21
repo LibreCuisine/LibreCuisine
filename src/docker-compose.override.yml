@@ -17,6 +17,13 @@ services:
       DATABASE__DATABASENAME: "RecipeDB"
       DATABASE__COLLECTIONNAME: "Recipes"
       DATABASE__CONNECTIONSTRING: "mongodb://${NO_SQL_USER:-root}:${NO_SQL_PASS:-password}@nosqldata:27017"
+
+  gateway-api:
+    volumes:
+      - ./ApiGateway/Envoy/config:/etc/envoy
+    ports:
+      - "5200:80"
+      - "15200:8001"
       
   mongo-express:
     ports:

@@ -3,6 +3,7 @@ version: "3.10"
 services:
   nosqldata:
     image: mongo
+    
   recipe-api:
     image: recipe.api:latest
     build:
@@ -10,3 +11,8 @@ services:
       dockerfile: Services/Recipe/Recipe.API/Dockerfile
     depends_on:
       - nosqldata
+  
+  gateway-api:
+    image: envoyproxy/envoy:v1.24-latest
+    depends_on:
+      - recipe-api

@@ -10,4 +10,5 @@ public class Recipe
     public string Desc { get; set; }
     public List<Ingredient> Ingredients { get; set; }
     public List<string> Steps { get; set; }
+    public List<string> Images { get; set; }
 }
