@@ -42,7 +42,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - uses: ./.gihub/workflows/composite/build-push
+      - uses: ./.github/workflows/composite/build-push
         with: 
           service: recipe-api
           registry_host: ghcr.io
