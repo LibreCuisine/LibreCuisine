@@ -27,7 +27,7 @@ jobs:
     if: ${{ github.event_name == 'pull_request' }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@2
+        uses: actions/checkout@v2
       - uses: ./.github/workflows/composite/build
         with: 
           service: recipe-api
@@ -41,7 +41,7 @@ jobs:
     if: ${{ github.event_name != 'pull_request' }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@2
+        uses: actions/checkout@v2
       - uses: ./.gihub/workflows/composite/build-push
         with: 
           service: recipe-api
