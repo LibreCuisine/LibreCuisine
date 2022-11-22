@@ -10,6 +10,13 @@ LibreCuisine is a open source cooking recipe web application build on a mircoser
 [Contributors]: https://github.com/LibreCuisine/LibreCuisine/graphs/contributors
 [Release]: https://github.com/LibreCuisine/LibreCuisine/releases
 
+## Build Status (Github Actions)
+| Image      | Status                                                                                                                                     |
+|------------|--------------------------------------------------------------------------------------------------------------------------------------------|
+| Recipe API | [![recipe-api](https://github.com/LibreCuisine/LibreCuisine/actions/workflows/recipe-api.yml/badge.svg?branch=develop)][recipe-api-action] |
+
+[recipe-api-action]: https://github.com/LibreCuisine/LibreCuisine/actions/workflows/recipe-api.yml
+
 ## Getting Started
 
 Make sure to have docker installed and configured
