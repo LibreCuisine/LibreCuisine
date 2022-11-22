@@ -10,10 +10,15 @@ inputs:
 runs: 
   using: composite
   steps:
+    - name: lowercase ${ inputs.registry_endpoint }}
+      shell: bash
+      run: |
+        REGISTRY_ENDPOINT=${{ inputs.registry_endpoint }}
+        echo "ENDPOINT=${REGISTRY_ENDPOINT,,}" >>${GITHUB_ENV}
     - name: Compose build ${{ inputs.service }}
       shell: bash
       run: sudo docker-compose build ${{ inputs.service }}
       working-directory: ./src
       env:
         TAG: ${{ env.BRANCH }}
-        REGISTRY: ${{ inputs.registry_endpoint }}
+        REGISTRY: ${{ env.ENDPOINT }}
