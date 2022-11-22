@@ -1,0 +1,24 @@
+name: "Build for PRs"
+description: "Builds a docker image without pushing"
+inputs: 
+  service:
+    description: "Service to Build"
+    required: true
+  registry_endpoint:
+    description: "Image registry repo e.g. ghcr.io/LibreCuisine"
+    required: true
+runs: 
+  using: composite
+  steps:
+    - name: lowercase ${ inputs.registry_endpoint }}
+      shell: bash
+      run: |
+        REGISTRY_ENDPOINT=${{ inputs.registry_endpoint }}
+        echo "ENDPOINT=${REGISTRY_ENDPOINT,,}" >>${GITHUB_ENV}
+    - name: Compose build ${{ inputs.service }}
+      shell: bash
+      run: sudo -E docker-compose build ${{ inputs.service }}
+      working-directory: ./src
+      env:
+        TAG: ${{ env.BRANCH }}
+        REGISTRY: ${{ env.ENDPOINT }}

@@ -1,0 +1,59 @@
+name: "Build and publish image"
+description: "Builds and publishes an image to a repository"
+
+inputs: 
+  service:
+    description: "Service to build"
+    required: true
+  registry_host:
+    description: "Image registry host e.g. ghcr.io"
+    required: true
+  registry_entpoint:
+    description: "Image registry endpoint e.g. ghcr.io/LibreCuisine"
+    required: true
+  registry_username:
+    description: "Registry username"
+    required: true
+  registry_password:
+    description: "Registry password"
+    required: true
+
+runs: 
+  using: composite
+  steps:
+    - name: Login to Container Registry
+      uses: docker/login-action@v1
+      with: 
+        registry: ${{ inputs.registry_host }}
+        username: ${{ inputs.registry_username }}
+        password: ${{ inputs.registry_password }}
+      
+    - name: Set branch name as env variable
+      run: |
+        currentbranch=$(echo ${GITHUB_REF##*/})
+        echo "running on $currentbranch"
+        echo "BRANCH=$currentbranch" >> $GITHUB_ENV
+      shell: bash
+      
+    - name: lowercase ${ inputs.registry_endpoint }}
+      shell: bash
+      run: |
+        REGISTRY_ENDPOINT=${{ inputs.registry_endpoint }}
+        echo "ENDPOINT=${REGISTRY_ENDPOINT,,}" >>${GITHUB_ENV}
+        
+    - name: Compose build ${{ inputs.service }}
+      shell: bash
+      run: sudo -E docker-compose build ${{ inputs.service }}
+      working-directory: ./src
+      env:
+        TAG: ${{ env.BRANCH }}
+        REGISTRY: ${{ env.ENDPOINT }}
+
+    - name: Compose push ${{ inputs.service }}
+      shell: bash
+      run: sudo -E docker-compose push ${{ inputs.service }}
+      working-directory: ./src
+      env:
+        TAG: ${{ env.BRANCH }}
+        REGISTRY: ${{ env.ENDPOINT }}
+  
