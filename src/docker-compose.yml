@@ -5,7 +5,7 @@ services:
     image: mongo
     
   recipe-api:
-    image: ${REGISTRY:-ghcr.io/LibreCuisine}/recipe.api:${TAG:-develop}
+    image: ${REGISTRY:-ghcr.io/librecuisine}/recipe.api:${TAG:-develop}
     build:
       context: .
       dockerfile: Services/Recipe/Recipe.API/Dockerfile
