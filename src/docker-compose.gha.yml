@@ -5,6 +5,7 @@ services:
       context: .
       dockerfile: Services/Recipe/Recipe.API/Dockerfile
       cache_from:
-        - type=gha
+        - type=local,src=/tmp/.buildx-cache
+          
       cache_to:
-        - type=gha,mode=max
+        - type=local,dest=/tmp/.buildx-cache-new,mode=max
