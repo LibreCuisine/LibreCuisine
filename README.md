@@ -6,9 +6,6 @@
 [![Licence: APGLv3](https://img.shields.io/github/license/LibreCuisine/LibreCuisine "Licence: APGLv3")][AGPL3]
 [![Contributors](https://badgen.net/github/contributors/LibreCuisine/LibreCuisine)][Contributors]
 [![Release](https://badgen.net/github/release/LibreCuisine/LibreCuisine/stable)][Release]
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-13-orange.svg?style=flat-square)](#contributors)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 LibreCuisine is a open source cooking recipe web application build on a mircoservice infrastructure
 
@@ -56,8 +53,3 @@ TODO: Insert Architecture Diagram here
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
-
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
-
-<!-- ALL-CONTRIBUTORS-LIST:END -->
