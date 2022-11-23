@@ -45,7 +45,7 @@ TODO: Insert Architecture Diagram here
 <table>
   <tbody>
     <tr>
-      <td align="center"><a href="https://github.com/jasperspahl"><img src="https://avatars.githubusercontent.com/u/39385451?v=4?s=100" width="100px;" alt="Jasper Spahl"/><br /><sub><b>Jasper Spahl</b></sub></a><br /><a href="https://github.com/LibreCuisine/LibreCuisine/commits?author=jasperspahl" title="Code">💻</a></td>
+      <td align="center"><a href="https://github.com/jasperspahl"><img src="https://avatars.githubusercontent.com/u/39385451?v=4?s=100" width="100px;" alt="Jasper Spahl"/><br /><sub><b>Jasper Spahl</b></sub></a><br /><a href="https://github.com/LibreCuisine/LibreCuisine/commits?author=jasperspahl" title="Code">💻</a> <a href="#projectManagement-jasperspahl" title="Project Management">📆</a></td>
     </tr>
   </tbody>
 </table>
