@@ -24,3 +24,7 @@ runs:
       env:
         TAG: ${{ env.BRANCH }}
         REGISTRY: ${{ env.ENDPOINT }}
+    - name: List Images
+      shell: bash
+      run: |
+        sudo docker ps
