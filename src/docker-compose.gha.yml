@@ -1,0 +1,7 @@
+services:
+  recipe-api:
+    build:
+      cache_from:
+        - type=registry,ref=ghcr.io/librecuisine/recipe.api-cache
+      cache_to:
+        - type=registry,ref=ghcr.io/librecuisine/recipe.api-cache,mode=max
