@@ -10,8 +10,6 @@ inputs:
 runs: 
   using: composite
   steps:
-    - name: Setup Docker Buildx
-      uses: docker/setup-buildx-action@v2
     - name: lowercase ${ inputs.registry_endpoint }}
       shell: bash
       run: |
