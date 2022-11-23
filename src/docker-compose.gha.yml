@@ -1,6 +1,9 @@
 services:
   recipe-api:
+    image: ${REGISTRY:-ghcr.io/librecuisine}/recipe.api:${TAG:-develop}
     build:
+      context: .
+      dockerfile: Services/Recipe/Recipe.API/Dockerfile
       cache_from:
         - type=gha
       cache_to:

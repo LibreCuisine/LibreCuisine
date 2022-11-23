@@ -17,7 +17,7 @@ runs:
         echo "ENDPOINT=${REGISTRY_ENDPOINT,,}" >>${GITHUB_ENV}
     - name: Compose build ${{ inputs.service }}
       shell: bash
-      run: sudo -E docker-compose build -f docker-compose.yml -f docker-compose.gha.yml ${{ inputs.service }}
+      run: sudo -E docker-compose build -f docker-compose.gha.yml ${{ inputs.service }}
       working-directory: ./src
       env:
         TAG: ${{ env.BRANCH }}
