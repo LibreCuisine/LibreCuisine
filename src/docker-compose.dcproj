@@ -12,6 +12,9 @@
     <ItemGroup>
         <None Include=".dockerignore" />
         <Content Include="ApiGateway\Envoy\config\envoy.yaml" />
+        <Content Include="docker-compose.gha.yml">
+          <DependentUpon>docker-compose.yml</DependentUpon>
+        </Content>
         <Content Include="docker-compose.yml" />
     </ItemGroup>
     <ItemGroup>

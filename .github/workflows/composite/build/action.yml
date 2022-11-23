@@ -10,6 +10,8 @@ inputs:
 runs: 
   using: composite
   steps:
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
     - name: lowercase ${ inputs.registry_endpoint }}
       shell: bash
       run: |
@@ -17,7 +19,7 @@ runs:
         echo "ENDPOINT=${REGISTRY_ENDPOINT,,}" >>${GITHUB_ENV}
     - name: Compose build ${{ inputs.service }}
       shell: bash
-      run: sudo -E docker-compose build ${{ inputs.service }}
+      run: sudo -E docker-compose build -y docker-compose.yml -y docker-compose.gha.yml ${{ inputs.service }}
       working-directory: ./src
       env:
         TAG: ${{ env.BRANCH }}
