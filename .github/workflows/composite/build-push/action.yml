@@ -45,7 +45,7 @@ runs:
         
     - name: Compose build ${{ inputs.service }}
       shell: bash
-      run: sudo -E docker-compose build -y docker-compose.yml -y docker-compose.gha.yml ${{ inputs.service }}
+      run: sudo -E docker-compose build -f docker-compose.yml -f docker-compose.gha.yml ${{ inputs.service }}
       working-directory: ./src
       env:
         TAG: ${{ env.BRANCH }}
@@ -53,7 +53,7 @@ runs:
 
     - name: Compose push ${{ inputs.service }}
       shell: bash
-      run: sudo -E docker-compose push -y docker-compose.yml -y docker-compose.gha.yml ${{ inputs.service }}
+      run: sudo -E docker-compose push -f docker-compose.yml -f docker-compose.gha.yml ${{ inputs.service }}
       working-directory: ./src
       env:
         TAG: ${{ env.BRANCH }}
