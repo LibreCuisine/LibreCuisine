@@ -15,9 +15,9 @@ public class UserService: IUserService
         _userRepository = userRepository;
         _hashService = hashService;
     }
-    public List<AuthScopes> GetScopesOfUser(Guid userId)
+    public List<AuthScopes> GetScopesOfUser(Guid id)
     {
-        var user = _userRepository.GetUserById(userId);
+        var user = _userRepository.GetUserById(id);
         return user is null ? new List<AuthScopes>() : user.Scopes;
     }
 
