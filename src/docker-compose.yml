@@ -4,6 +4,17 @@ services:
   nosqldata:
     image: mongo
     
+  identitydata:
+    image: postgres
+  
+  identity-api:
+    image: ${REGISTRY:-ghcr.io/librecuisine}/identity.api:${TAG:-develop}
+    build:
+      context: .
+      dockerfile: Services/Identity/Identity.API/Dockerfile
+    depends_on:
+      - identitydata
+    
   recipe-api:
     image: ${REGISTRY:-ghcr.io/librecuisine}/recipe.api:${TAG:-develop}
     build:

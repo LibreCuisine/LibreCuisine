@@ -9,7 +9,27 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${NO_SQL_USER:-root}
       MONGO_INITDB_ROOT_PASSWORD: ${NO_SQL_PASS:-password}
+      
+  identitydata:
+    ports:
+      - "54321:5432"
+    volumes:
+      - librecuisine-identitydata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: ${ID_PASS:-password}
+      POSTGRES_USER: ${ID_USER:-root}
+      POSTGRES_DB: "identity"
   
+  identity-api:
+    ports:
+      - "5102:80"
+    volumes:
+      - ~/.librecuisine:/app/keys:ro
+    environment:
+      JWT__PRIVATEKEYPATH: "/app/keys/privatekey.pem"
+      JWT__PUBLICKEYPATH: "/app/keys/publickey.pem"
+      JWT__ISSUER: "http://localhost:5200"
+      CONNECTIONSTRINGS__POSTGRESCONNECTION: "Server=identitydata;Port=5432;Database=identity;User Id=${ID_USER:-root};Password=${ID_PASS:-password};"
   recipe-api:
     ports:
       - "5101:80"
@@ -36,4 +56,6 @@ services:
 
 volumes:
   librecuisine-nosqldata:
+    external: false
+  librecuisine-identitydata:
     external: false

@@ -22,6 +22,14 @@ LibreCuisine is a open source cooking recipe web application build on a mircoser
 
 ## Getting Started
 
+For the authentication we need to create a public and private key with `openssl`
+
+```sh
+mkdir -p ~/.librecuisine
+openssl genrsa -out ~/.librecuisine/privatekey.pem
+openssl rsa -in ~/.librecuisine/privatekey.pem -out ~/.librecuisine/publickey.pem -pubout -outform PEM
+```
+
 Make sure to have docker installed and configured
 
 ```sh
