@@ -32,7 +32,47 @@ docker-compose up
 
 ### Architecture
 
-TODO: Insert Architecture Diagram here
+```mermaid
+flowchart LR
+  subgraph Clients
+  webapp[WebApp\nReact]
+  website[Website]
+  end
+
+  webmvc[WebMvc]
+  gw-api{Api Gateway}
+
+  webapp-->gw-api
+  website-->webmvc
+  webmvc-->gw-api
+
+  gw-api-->id-api
+  gw-api-->r-api
+  gw-api-->p-api
+
+  subgraph .
+  rmq[RabbitMQ]
+
+  subgraph Identity
+  id-api[Identity.Api]
+  id-api<-->id-data(Postgre)
+  end
+
+  subgraph Profile
+  p-api[Profile.Api]
+  p-api<-->data(Database)
+  end
+
+  subgraph Recipe
+  r-api[Recipe.Api]
+  r-api<-->r-data(MongoDB)
+  end
+  r-api--->|async|rmq
+  p-api<---|async|rmq
+
+  r-api-->|gRPC|p-api
+  end
+```
 
 ## Contributors
 
