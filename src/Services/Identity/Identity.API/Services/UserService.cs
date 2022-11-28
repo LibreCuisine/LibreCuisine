@@ -21,10 +21,12 @@ public class UserService: IUserService
         return user is null ? new List<AuthScopes>() : user.Scopes;
     }
 
-    public bool ValidateUser(UserDto userDto)
+    public User? ValidateUser(UserDto userDto)
     {
         var user = _userRepository.GetUserByUsername(userDto.Username);
-        return user is not null && _hashService.VerifyPassword(userDto.Password, user.PasswordHash, user.PasswordSalt);
+        if (user is null || _hashService.VerifyPassword(userDto.Password, user.PasswordHash, user.PasswordSalt))
+            return null;
+        return user;
     }
 
     public Guid RegisterUser(UserDto userDto)

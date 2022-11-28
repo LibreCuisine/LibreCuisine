@@ -5,7 +5,6 @@ using Identity.API.Options;
 using Identity.Common.Enums;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using NuGet.Packaging;
 
 namespace Identity.API.Services;
 
@@ -26,12 +25,12 @@ public class TokenService: ITokenService
         var rsa = RSA.Create();
         rsa.ImportFromPem(_privateKey);
         var credentials = new SigningCredentials(new RsaSecurityKey(rsa), SecurityAlgorithms.RsaSha256);
-        var claims = new[]
+        List<Claim> claims = new()
         {
             new Claim(JwtRegisteredClaimNames.Sub, username),
         };
-        claims.AddRange(scopes.ConvertAll(x=>new Claim(ClaimTypes.Role, x.ToString())));
-
+        claims.AddRange(scopes.Select(scope => new Claim(CustomJwtNames.Scope, scope.ToString())));
+        
         var token = new JwtSecurityToken(
             _options.Issuer,
             _options.Issuer,

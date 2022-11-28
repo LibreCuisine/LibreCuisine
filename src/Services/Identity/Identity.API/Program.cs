@@ -2,11 +2,12 @@ using Identity.API.Data;
 using Identity.API.Options;
 using Identity.API.Repositories;
 using Identity.API.Services;
+using Identity.Common.Dtos;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
 builder.Services.Configure<JwtOptions>(
     builder.Configuration.GetSection(JwtOptions.Jwt));
 builder.Services.AddDbContext<IdentityDbContext>(opt =>
@@ -33,9 +34,25 @@ using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
     var context = services.GetRequiredService<IdentityDbContext>();
-    context.Database.GetPendingMigrations();
     context.Database.Migrate();
 }
 app.UseHttpsRedirection();
+
+app.MapPost("register", ([FromBody] UserDto userDto, IUserService usrSrv, ITokenService tokenSrv) =>
+{
+    var id = usrSrv.RegisterUser(userDto);
+    var scopes = usrSrv.GetScopesOfUser(id);
+    return tokenSrv.GenerateToken(userDto.Username, scopes);
+}).WithName("Register").WithOpenApi();
+
+app.MapPost("login", ([FromBody] UserDto userDto, IUserService usrSrv, ITokenService tknSrv) =>
+{
+    var usr = usrSrv.ValidateUser(userDto);
+    return usr is null ? TypedResults.BadRequest() : Results.Ok(tknSrv.GenerateToken(usr.Username, usr.Scopes));
+})
+.WithName("Login")
+.Produces<string>(StatusCodes.Status200OK)
+.Produces(StatusCodes.Status400BadRequest)
+.WithOpenApi();
 
 app.Run();
