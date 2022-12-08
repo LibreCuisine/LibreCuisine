@@ -5,3 +5,9 @@ services:
         - type=registry,ref=ghcr.io/librecuisine/recipe.api-cache
       cache_to:
         - type=registry,ref=ghcr.io/librecuisine/recipe.api-cache,mode=max
+  identity-api:
+    build:
+      cache_from:
+        - type=registry,ref=ghcr.io/librecuisine/identity.api-cache
+      cache_to:
+        - type=registry,ref=ghcr.io/librecuisine/identity.api-cache,mode=max

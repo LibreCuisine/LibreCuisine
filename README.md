@@ -22,6 +22,17 @@ LibreCuisine is a open source cooking recipe web application build on a mircoser
 
 ## Getting Started
 
+For the authentication we need to create a public and private key with `openssl`
+
+```sh
+mkdir -p ~/.librecuisine
+openssl genrsa -out ~/.librecuisine/privatekey.pem
+openssl rsa -in ~/.librecuisine/privatekey.pem -out ~/.librecuisine/publickey.pem -pubout -outform PEM
+```
+
+Replace paths all `appsettings.Development.json` with the path absolute paths to the public and private keys created in the step early
+**!Important, don't use `~` for the home path as dotnet doesn't recognize that**
+
 Make sure to have docker installed and configured
 
 ```sh

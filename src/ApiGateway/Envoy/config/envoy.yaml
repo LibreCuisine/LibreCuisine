@@ -39,6 +39,20 @@ static_resources:
                   auto_host_rewrite: true
                   prefix_rewrite: "/"
                   cluster: recipe
+              - name: "i-short"
+                match:
+                  prefix: "/i/"
+                route:
+                  auto_host_rewrite: true
+                  prefix_rewrite: "/"
+                  cluster: identity
+              - name: "i-long"
+                match:
+                  prefix: "/identity-api"
+                route:
+                  auto_host_rewrite: true
+                  prefix_rewrite: "/"
+                  cluster: identity
   clusters:
   - name: recipe
     type: LOGICAL_DNS
@@ -51,6 +65,17 @@ static_resources:
               socket_address:
                 address: recipe-api
                 port_value: 80
+  - name: identity
+    type: LOGICAL_DNS
+    load_assignment:
+      cluster_name: identity
+      endpoints:
+        - lb_endpoints:
+            - endpoint:
+                address:
+                  socket_address:
+                    address: identity-api
+                    port_value: 80
 admin:
   access_log_path: "/dev/null"
   address:
