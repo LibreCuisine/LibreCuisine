@@ -42,6 +42,23 @@ public class TokenService: ITokenService
 
     public bool VerityToken(string token)
     {
-        throw new NotImplementedException();
+        var rsa = RSA.Create();
+        rsa.ImportFromPem(_publicKey);
+        SecurityToken validToken;
+        var validationParameters = new TokenValidationParameters
+        {
+            IssuerSigningKey = new RsaSecurityKey(rsa),
+            ValidateAudience = false,
+            ValidateIssuer = false,
+        };
+        try
+        {
+            new JwtSecurityTokenHandler().ValidateToken(token, validationParameters, out _);
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
     }
 }

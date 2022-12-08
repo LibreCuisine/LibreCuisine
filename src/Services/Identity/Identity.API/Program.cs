@@ -55,4 +55,20 @@ app.MapPost("login", ([FromBody] UserDto userDto, IUserService usrSrv, ITokenSer
 .Produces(StatusCodes.Status400BadRequest)
 .WithOpenApi();
 
+app.MapGet("validate", ([FromHeader(Name = "Authentication")] string auth, ITokenService tknSrv) =>
+{
+    var token = auth.Split(" ");
+    if (token[0] != "Bearer" && token.Length != 2)
+    {
+        return Results.BadRequest();
+    }
+
+    return tknSrv.VerityToken(token[1]) ? Results.Ok() : Results.Unauthorized();
+})
+.WithName("Validate")
+.Produces(StatusCodes.Status200OK)
+.Produces(StatusCodes.Status400BadRequest)
+.Produces(StatusCodes.Status401Unauthorized);
+
+
 app.Run();
