@@ -59,3 +59,7 @@ volumes:
     external: false
   librecuisine-identitydata:
     external: false
+networks:
+  default:
+    name: librecuisine-network
+    external: false
