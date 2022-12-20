@@ -22,8 +22,15 @@ services:
       dockerfile: Services/Recipe/Recipe.API/Dockerfile
     depends_on:
       - nosqldata
+
+  mvc-api:
+    image: ${REGISTRY:-ghcr.io/librecuisine}/mvc.api:${TAG:-develop}
+    build:
+      context: Services/Mvc
+      dockerfile: Dockerfile
   
   gateway-api:
     image: envoyproxy/envoy:v1.24-latest
     depends_on:
       - recipe-api
+      - identity-api

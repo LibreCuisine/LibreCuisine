@@ -9,5 +9,7 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -installsuffix cgo -ldflag
 FROM scratch
 COPY --from=builder /src/templates /templates
 COPY --from=builder /src/static /static
-COPY --from=builder /build /app
+COPY --from=builder /build/app /app
+ENV GIN_MODE=release
+ENV MVC_PORT=":80"
 ENTRYPOINT [ "/app" ]

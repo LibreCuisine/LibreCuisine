@@ -15,6 +15,7 @@ import (
 
 type Config struct {
 	ServerUrl string
+	Port      string
 }
 
 func main() {
@@ -24,6 +25,12 @@ func main() {
 		config.ServerUrl = serverUrl
 	} else {
 		config.ServerUrl = "http://localhost:5200"
+	}
+	port, ok := os.LookupEnv("MVC_PORT")
+	if ok {
+		config.Port = port
+	} else {
+		config.Port = ":8080"
 	}
 	r := gin.Default()
 	r.Static("/static", "./static")
@@ -108,5 +115,5 @@ func main() {
 		}
 		c.Redirect(http.StatusFound, "/")
 	})
-	r.Run()
+	r.Run(config.Port)
 }
