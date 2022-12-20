@@ -2,5 +2,10 @@
     <footer>
         <a href="/">LibreCuisine</a>
         <a href="/create">Neues Rezept</a>
+        {{ if .LoggedIn }}
+            <a href="/logout">Logout</a>
+        {{ else }}
+            <a href="/login{{ if .Current }}?returnUrl={{ .Current }}{{ end }}">Login</a>
+        {{ end }}
     </footer>
 {{ end }}

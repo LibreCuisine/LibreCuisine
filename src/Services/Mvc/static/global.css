@@ -124,3 +124,11 @@ form input[type="submit"]{
 .form-fields > input {
     margin-bottom: 0.5rem;
 }
+
+.error {
+    background: var(--color-tertiary);
+    color: var(--color-background);
+    padding: 0.5rem;
+    width: 100%;
+    text-align: center;
+}

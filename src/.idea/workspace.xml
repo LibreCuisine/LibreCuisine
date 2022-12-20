@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="16ec653c-3687-4858-b284-0e015d6d48f7" name="Changes" comment="18 MVC Docker">
+      <change afterPath="$PROJECT_DIR$/Services/Mvc/config/config.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Mvc/controller/create.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Mvc/controller/index.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Mvc/controller/login.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Mvc/controller/recipe.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/Mvc/templates/pages/login.gohtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Mvc/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Mvc/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Mvc/static/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Mvc/static/global.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Mvc/templates/components/footer.gohtml" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Mvc/templates/components/footer.gohtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Mvc/templates/pages/create.gohtml" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Mvc/templates/pages/create.gohtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Mvc/templates/pages/index.gohtml" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Mvc/templates/pages/index.gohtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Mvc/templates/pages/recipe.gohtml" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Mvc/templates/pages/recipe.gohtml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" url="file:///usr/lib/go" />
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2J9EMDsC08pANzPAt5hRGKZl1cm" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultGoTemplateProperty": "Go File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "go.import.settings.migrated": "true",
+    "go.sdk.automatically.set": "true",
+    "last_opened_file_path": "/home/jasper/Documents/p/LibreCuisine/src",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Services/Mvc/templates/pages" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Go Build.go build github.com/librecuisine/mvc">
+    <configuration name="Release" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="src" />
+      <working_directory value="$PROJECT_DIR$/Services/Mvc" />
+      <envs>
+        <env name="GIN_MODE" value="release" />
+      </envs>
+      <kind value="PACKAGE" />
+      <package value="github.com/librecuisine/mvc" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/Services/Mvc/main.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build github.com/librecuisine/mvc" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="src" />
+      <working_directory value="$PROJECT_DIR$/Services/Mvc" />
+      <kind value="PACKAGE" />
+      <package value="github.com/librecuisine/mvc" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/Services/Mvc/main.go" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Go Build.Release" />
+      <item itemvalue="Go Build.go build github.com/librecuisine/mvc" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build github.com/librecuisine/mvc" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="18 MVC microservice" />
+    <MESSAGE value="18 MVC Docker" />
+    <option name="LAST_COMMIT_MESSAGE" value="18 MVC Docker" />
+  </component>
+  <component name="VgoProject">
+    <settings-migrated>true</settings-migrated>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/Services/Mvc/controller/login.go</url>
+          <line>70</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

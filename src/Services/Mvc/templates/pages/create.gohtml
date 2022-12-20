@@ -35,7 +35,7 @@
                 <input type="submit" value="Rezept erstellen">
                 <script>
                     document.getElementById("add-ingredient").addEventListener("click", function() {
-                        var newIngredient = document.createElement("input");
+                        const newIngredient = document.createElement("input");
                         newIngredient.type = "text";
                         newIngredient.name = "ingredients[]";
                         newIngredient.pattern = "[0-9]+ [a-zA-ZäöüÄÖÜ]+ .*";
@@ -43,7 +43,7 @@
                         newIngredient.focus();
                     });
                     document.getElementById("add-step").addEventListener("click", function() {
-                        var newStep = document.createElement("input");
+                        const newStep = document.createElement("input");
                         newStep.name = "steps[]";
                         newStep.required = true;
                         document.getElementById("steps-fields").appendChild(newStep);
@@ -52,7 +52,7 @@
                 </script>
             </form>
         </section>
-        {{ template "footer" }}
+        {{ template "footer" . }}
     </main>
 </body>
 </html>
