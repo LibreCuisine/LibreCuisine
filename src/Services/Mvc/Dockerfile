@@ -8,5 +8,6 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -installsuffix cgo -ldflag
 
 FROM scratch
 COPY --from=builder /src/templates /templates
+COPY --from=builder /src/static /static
 COPY --from=builder /build /app
 ENTRYPOINT [ "/app" ]

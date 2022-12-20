@@ -1,0 +1,30 @@
+<html lang="de">
+	<head>
+		{{ template "head"}}
+		<title>LibreCuisine</title>
+		<style>
+			@media (min-width: 50rem) {
+				#recipes-section > ul {
+					column-count: 2;
+				}
+			}
+		</style>
+	</head>
+	<body>
+	<main>
+		<header>
+			<a href="/"><h1>LibreCuisine</h1></a>
+		</header>
+
+		<section id="recipes-section">
+			<h2>Rezepte</h2>
+			<ul>
+				{{ range .Recipes }}
+					<li><a href="/{{ .Id }}">{{ .Name }}</a></li>
+				{{ end }}
+			</ul>
+		</section>
+	</main>
+	{{ template "footer"}}
+	</body>
+</html>
