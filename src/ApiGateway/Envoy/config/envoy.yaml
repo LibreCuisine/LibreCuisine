@@ -21,6 +21,17 @@ static_resources:
           route_config:
             name: librecuisine_backend_rout
             virtual_hosts:
+            - name: librecuisine_mvc
+              domains:
+                - "librecuisine"
+                - "librecuisine.local"
+              routes:
+                - name: all
+                  match:
+                    prefix: "/"
+                  route:
+                    auto_host_rewrite: true
+                    cluster: mvc
             - name: librecuisine_backend
               domains: 
                 - "*"
@@ -53,6 +64,7 @@ static_resources:
                   auto_host_rewrite: true
                   prefix_rewrite: "/"
                   cluster: identity
+
   clusters:
   - name: recipe
     type: LOGICAL_DNS
@@ -75,6 +87,17 @@ static_resources:
                 address:
                   socket_address:
                     address: identity-api
+                    port_value: 80
+  - name: mvc
+    type: LOGICAL_DNS
+    load_assignment:
+      cluster_name: mvc
+      endpoints:
+        - lb_endpoints:
+            - endpoint:
+                address:
+                  socket_address:
+                    address: mvc-api
                     port_value: 80
 admin:
   access_log_path: "/dev/null"

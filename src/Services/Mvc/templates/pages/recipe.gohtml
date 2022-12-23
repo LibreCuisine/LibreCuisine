@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+	{{ template "head" }}
+	<title>{{ .Name }} | LibreCuisine</title>
+</head>
+<body>
+	<main>
+		<header>
+			<a href="/" about="Go Back"><h1>{{ .Name }}</h1></a>
+			<h3>{{ .Desc }}</h3>
+		</header>
+		<section id="ingredients-section">
+			<h2>Zutaten</h2>
+			<ul>
+				{{ range .Ingredients }}
+					<li>{{ .Amount }} {{ .Unit }} {{ .Name }}</li>
+				{{ end }}
+			</ul>
+		</section>
+		<section id="steps-section">
+			<h2>Zubereitung</h2>
+			<ol>
+				{{ range .Steps }}
+					<li>{{ . }}</li>
+				{{ end }}
+			</ol>
+		</section>
+		{{ template "footer" . }}
+	</main>
+</body>
+</html>

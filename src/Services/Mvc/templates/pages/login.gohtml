@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    {{ template "head"}}
+    <title>Login | LibreCuisine</title>
+</head>
+<body>
+<main>
+    <header>
+        <a href="/"><h1>LibreCuisine</h1></a>
+        <h2>Login</h2>
+    </header>
+    <section id="login-section">
+        <form action="/login?returnUrl={{ .ReturnUrl }}" method="post">
+            {{ if .Error }}
+                <p class="error">{{ .Error }}</p>
+            {{ end }}
+            <div class="form-part">
+                <label for="username">Benutzername</label>
+                <input type="text" name="username" id="username" required>
+            </div>
+            <div class="form-part">
+                <label for="password">Passwort</label>
+                <input type="password" name="password" id="password" required>
+            </div>
+            <input type="submit" value="Login">
+        </form>
+    </section>
+    {{ template "footer" . }}
+</main>
+</body>
+</html>
