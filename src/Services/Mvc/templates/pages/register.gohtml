@@ -2,16 +2,16 @@
 <html lang="de">
 <head>
     {{ template "head"}}
-    <title>Login | LibreCuisine</title>
+    <title>Register | LibreCuisine</title>
 </head>
 <body>
 <main>
     <header>
         <a href="/"><h1>LibreCuisine</h1></a>
-        <h2>Login</h2>
+        <h2>Register</h2>
     </header>
-    <section id="login-section">
-        <form action="/login?returnUrl={{ .ReturnUrl }}" method="post">
+    <section id="register-section" name="register">
+        <form action="/register?returnUrl={{ .ReturnUrl }}" method="post">
             {{ if .Error }}
                 <p class="error">{{ .Error }}</p>
             {{ end }}

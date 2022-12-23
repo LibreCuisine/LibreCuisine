@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="de">
 <head>
     {{ template "head" }}
@@ -34,21 +35,40 @@
                 </div>
                 <input type="submit" value="Rezept erstellen">
                 <script>
-                    document.getElementById("add-ingredient").addEventListener("click", function() {
-                        const newIngredient = document.createElement("input");
-                        newIngredient.type = "text";
-                        newIngredient.name = "ingredients[]";
-                        newIngredient.pattern = "[0-9]+ [a-zA-ZäöüÄÖÜ]+ .*";
-                        document.getElementById("ingredients-fields").appendChild(newIngredient);
-                        newIngredient.focus();
+		    document.getElementById("add-ingredient").addEventListener("click", () => {
+			addRemoveButtonToElement(() => {
+				const newIngredient = document.createElement("input");
+				newIngredient.type = "text";
+				newIngredient.name = "ingredients[]";
+				newIngredient.pattern = "[0-9]+ [a-zA-ZäöüÄÖÜ]+ .*";
+				return newIngredient;
+			}, "ingredients-fields");
                     });
-                    document.getElementById("add-step").addEventListener("click", function() {
-                        const newStep = document.createElement("input");
-                        newStep.name = "steps[]";
-                        newStep.required = true;
-                        document.getElementById("steps-fields").appendChild(newStep);
-                        newStep.focus();
+		    document.getElementById("add-step").addEventListener("click", () => {
+			addRemoveButtonToElement(() => {
+				const newStep = document.createElement("input");
+				newStep.name = "steps[]";
+				newStep.required = true;
+				return newStep;
+			}, "steps-fields");
                     });
+		    function addRemoveButtonToElement(createInputElementFunc, where) {
+			    const div = document.createElement("div");
+			    div.style.display = "flex";
+			    div.style.width = "100%";
+			    const inputElement = createInputElementFunc();
+			    inputElement.style.flex = 1;
+			    div.appendChild(inputElement);
+			    const button = document.createElement("button");
+			    button.innerHTML = "-";
+			    button.classList.add("button");
+			    button.addEventListener("click", () => {
+				    div.remove();
+			    })
+			    div.appendChild(button);
+			    document.getElementById(where).appendChild(div);
+			    inputElement.focus();
+		    }
                 </script>
             </form>
         </section>

@@ -16,6 +16,8 @@ func main() {
 	r.POST("/create", controller.PostCreate)
 	r.GET("/login", controller.GetLogin)
 	r.POST("/login", controller.PostLogin)
+	r.GET("/register", controller.GetRegister)
+	r.POST("/register", controller.PostRegister)
 	r.GET("/logout", controller.Logout)
 	r.Run(config.GetPort())
 }

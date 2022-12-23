@@ -4,21 +4,24 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"github.com/gin-gonic/gin"
-	"github.com/librecuisine/mvc/config"
-	"github.com/librecuisine/mvc/dtos"
 	"net/http"
 	"regexp"
 	"strconv"
+
+	"github.com/gin-gonic/gin"
+	"github.com/librecuisine/mvc/config"
+	"github.com/librecuisine/mvc/dtos"
 )
 
 func GetCreate(c *gin.Context) {
-	_, err := c.Cookie("token")
-	if err != nil {
+	token, err := c.Cookie("token")
+	if err != nil || token == "" {
 		c.Redirect(http.StatusFound, "/login?returnUrl=/create")
 		return
 	}
-	c.HTML(http.StatusOK, "create.gohtml", nil)
+	c.HTML(http.StatusOK, "create.gohtml", gin.H{
+		"LoggedIn": true,
+	})
 }
 
 func PostCreate(c *gin.Context) {

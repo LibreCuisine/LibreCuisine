@@ -6,6 +6,7 @@
             <a href="/logout">Logout</a>
         {{ else }}
             <a href="/login{{ if .Current }}?returnUrl={{ .Current }}{{ end }}">Login</a>
+	    <a href="/register{{ if .Current }}?returnUrl={{ .Current }}{{end}}">Register</a>
         {{ end }}
     </footer>
 {{ end }}

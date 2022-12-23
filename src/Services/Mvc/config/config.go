@@ -1,6 +1,9 @@
 package config
 
-import "os"
+import (
+	"fmt"
+	"os"
+)
 
 type Config struct {
 	ServerUrl string
@@ -16,6 +19,7 @@ func DefaultConfig() *Config {
 	}
 	serverUrl, ok := os.LookupEnv("SERVER_URL")
 	if ok {
+		fmt.Printf("SERVER_URL=%s\n", serverUrl)
 		conf.ServerUrl = serverUrl
 	}
 	port, ok := os.LookupEnv("MVC_PORT")

@@ -121,7 +121,7 @@ form input[type="submit"]{
     display: flex;
     flex-direction: column;
 }
-.form-fields > input {
+.form-fields > input, .form-fields > div {
     margin-bottom: 0.5rem;
 }
 
