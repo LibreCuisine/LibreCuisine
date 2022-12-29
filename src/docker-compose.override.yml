@@ -44,6 +44,11 @@ services:
     ports:
       - "5200:80"
       - "15200:8001"
+
+  rabbitmq:
+    ports:
+      - "5672:5672"
+      - "15672:15672"
       
   mongo-express:
     ports:
