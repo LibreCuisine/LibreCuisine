@@ -8,7 +8,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Identity.API.Services;
 
-public class TokenService: ITokenService
+public class TokenService : ITokenService
 {
     private readonly JwtOptions _options;
     private readonly string _privateKey;
@@ -30,7 +30,7 @@ public class TokenService: ITokenService
             new Claim(JwtRegisteredClaimNames.Sub, username),
         };
         claims.AddRange(scopes.Select(scope => new Claim(CustomJwtNames.Scope, scope.ToString())));
-        
+
         var token = new JwtSecurityToken(
             _options.Issuer,
             _options.Issuer,
@@ -44,7 +44,6 @@ public class TokenService: ITokenService
     {
         var rsa = RSA.Create();
         rsa.ImportFromPem(_publicKey);
-        SecurityToken validToken;
         var validationParameters = new TokenValidationParameters
         {
             IssuerSigningKey = new RsaSecurityKey(rsa),
