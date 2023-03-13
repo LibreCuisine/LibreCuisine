@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    {{ template "head" }}
+    <title>Neues Rezept Erstellen | LibreCuisine</title>
+</head>
+<body>
+    <main>
+        <header>
+           <h1>Neues Rezept Erstellen</h1>
+        </header>
+        <section id="new-recipe">
+            <form action="/create" method="POST">
+                <div id="name-div" class="form-part">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" required>
+                </div>
+                <div id="description-div" class="form-part">
+                    <label for="description">Beschreibung</label>
+                    <textarea name="desc" id="description" required></textarea>
+                </div>
+                <div id="ingredients-div" class="form-part">
+                    <label for="ingredients[]">Zutaten</label>
+                    <div id="ingredients-fields" class="form-fields">
+                        <input type="text" name="ingredients[]" id="ingredients[]" pattern="[0-9]+ [a-zA-ZäöüÄÖÜ]+ .*" required>
+                    </div>
+                    <button type="button" id="add-ingredient" class="button-add"> + </button>
+                </div>
+                <div id="steps-div" class="form-part">
+                    <label for="steps">Anleitung</label>
+                    <div id="steps-fields" class="form-fields">
+                        <input name="steps[]" id="steps" required>
+                    </div>
+                    <button type="button" id="add-step" class="button-add">+</button>
+                </div>
+                <input type="submit" value="Rezept erstellen">
+                <script>
+		    document.getElementById("add-ingredient").addEventListener("click", () => {
+			addRemoveButtonToElement(() => {
+				const newIngredient = document.createElement("input");
+				newIngredient.type = "text";
+				newIngredient.name = "ingredients[]";
+				newIngredient.pattern = "[0-9]+ [a-zA-ZäöüÄÖÜ]+ .*";
+				return newIngredient;
+			}, "ingredients-fields");
+                    });
+		    document.getElementById("add-step").addEventListener("click", () => {
+			addRemoveButtonToElement(() => {
+				const newStep = document.createElement("input");
+				newStep.name = "steps[]";
+				newStep.required = true;
+				return newStep;
+			}, "steps-fields");
+                    });
+		    function addRemoveButtonToElement(createInputElementFunc, where) {
+			    const div = document.createElement("div");
+			    div.style.display = "flex";
+			    div.style.width = "100%";
+			    const inputElement = createInputElementFunc();
+			    inputElement.style.flex = 1;
+			    div.appendChild(inputElement);
+			    const button = document.createElement("button");
+			    button.innerHTML = "-";
+			    button.classList.add("button");
+			    button.addEventListener("click", () => {
+				    div.remove();
+			    })
+			    div.appendChild(button);
+			    document.getElementById(where).appendChild(div);
+			    inputElement.focus();
+		    }
+                </script>
+            </form>
+        </section>
+        {{ template "footer" . }}
+    </main>
+</body>
+</html>

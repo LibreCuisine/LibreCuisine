@@ -38,6 +38,12 @@ services:
       DATABASE__COLLECTIONNAME: "Recipes"
       DATABASE__CONNECTIONSTRING: "mongodb://${NO_SQL_USER:-root}:${NO_SQL_PASS:-password}@nosqldata:27017"
 
+  mvc-api:
+    ports:
+      - "80:80"
+    environment:
+      SERVER_URL: "http://gateway-api"
+
   gateway-api:
     volumes:
       - ./ApiGateway/Envoy/config:/etc/envoy
@@ -58,4 +64,8 @@ volumes:
   librecuisine-nosqldata:
     external: false
   librecuisine-identitydata:
+    external: false
+networks:
+  default:
+    name: librecuisine-network
     external: false
