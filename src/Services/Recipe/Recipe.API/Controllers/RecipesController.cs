@@ -48,7 +48,7 @@ namespace Recipe.API.Controllers
 
         [HttpPost]
         [ProducesResponseType(typeof(RecipeReadDto), (int)HttpStatusCode.Created)]
-        public async Task<ActionResult<RecipeReadDto>> CreateRecipe([FromBody] RecipeCreateDto recipeToCreate)
+        public async Task<ActionResult> CreateRecipe([FromBody] RecipeCreateDto recipeToCreate)
         {
             var recipe = _mapper.Map<Models.Recipe>(recipeToCreate);
             _logger.LogInformation("Creating new Recipe {Recipe}", recipe.Name);

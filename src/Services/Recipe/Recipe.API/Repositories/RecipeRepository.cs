@@ -22,7 +22,7 @@ public class RecipeRepository: IRecipeRepository
 
     public IEnumerable<Models.Recipe> GetRecipes() => _recipes.FindSync(_ => true).ToList();
     public Models.Recipe? GetRecipeById(Guid id) => _recipes.Find(r => r.Id == id).FirstOrDefault();
-    public async Task CreateRecipe(Models.Recipe recipe) =>await _recipes.InsertOneAsync(recipe);
+    public async Task CreateRecipe(Models.Recipe recipe) => await _recipes.InsertOneAsync(recipe);
     public async Task UpdateRecipe(Guid id, Models.Recipe recipe) => await _recipes.ReplaceOneAsync(x => x.Id == id, recipe);
     public async Task DeleteRecipe(Guid id) => await _recipes.DeleteOneAsync(x => x.Id == id);
 }
